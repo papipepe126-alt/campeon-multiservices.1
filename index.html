@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>~Campéon's Multi-Services CMS — Retraits 1xBet, Internet, Appel</title>
+  <meta name="description" content="Services en ligne : Retraits 1xBet, Souscriptions Internet, Crédit d'appel et Transfert d'unités. Contact rapide via WhatsApp." />
+
+  <!-- Google font (sans-serif moderne) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#f5f9ff;
+      --card:#ffffff;
+      --accent:#0b63d6;
+      --accent-2:#0f4fb3;
+      --muted:#6b7280;
+      --success:#10b981;
+      --danger:#ef4444;
+      --glass: rgba(255,255,255,0.7);
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: linear-gradient(180deg,var(--bg),#eaf3ff 60%);
+      color:#111827;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:24px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .container{
+      width:100%;
+      max-width:980px;
+      margin:auto;
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:28px;
+    }
+
+    header.site-brand{
+      grid-column:1 / -1;
+      display:flex;
+      align-items:center;
+      gap:16px;
+      margin-bottom:6px;
+    }
+    .logo{
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      color:white;
+      width:72px;
+      height:72px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:12px;
+      font-weight:700;
+      font-size:18px;
+      box-shadow: 0 6px 20px rgba(11,99,214,0.18);
+    }
+    .brand-text h1{margin:0;font-size:20px;}
+    .brand-text p{margin:0;color:var(--muted);font-size:13px}
+
+    /* Main card */
+    .card{
+      background:var(--card);
+      border-radius:14px;
+      padding:22px;
+      box-shadow: 0 10px 30px rgba(15,79,179,0.08);
+    }
+
+    .left{
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      gap: 8px;
+      border-bottom: 1px solid #e6eefc;
+      margin-bottom: 20px;
+    }
+    .tabs button {
+      background: none;
+      padding: 10px 16px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      border-radius: 8px 8px 0 0;
+      transition: all 0.2s ease-in-out;
+      border: none;
+    }
+    .tabs button.active {
+      color: var(--accent);
+      background: linear-gradient(180deg, rgba(11,99,214,0.05), transparent);
+    }
+    .tabs button:hover {
+      color: var(--accent-2);
+    }
+
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active-tab {
+      display: block;
+    }
+
+    .balance{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .balance .info{color:var(--muted);font-size:13px}
+    .balance .wave-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      background:linear-gradient(90deg,#fff,#f1f7ff);
+      border:1px solid rgba(11,99,214,0.08);
+      padding:8px 12px;
+      border-radius:10px;
+      text-decoration:none;
+      color:var(--accent-2);
+      font-weight:600;
+      box-shadow: 0 6px 18px rgba(11,99,214,0.06);
+    }
+
+    form .row{display:flex;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+    label{font-size:13px;color:var(--muted);display:block;margin-bottom:6px}
+    input[type="text"], input[type="number"], select{
+      width:100%;
+      padding:12px 14px;
+      border-radius:10px;
+      border:1px solid #e6eefc;
+      background:#fbfdff;
+      font-size:15px;
+    }
+    .small{
+      font-size:13px;color:var(--muted)
+    }
+
+    .summary{
+      background:linear-gradient(180deg,#f8fbff,#ffffff);
+      border-radius:10px;
+      padding:12px;
+      border:1px solid rgba(11,99,214,0.04);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:8px;
+    }
+
+    .actions{
+      display:flex;
+      gap:10px;
+      margin-top:6px;
+      align-items:center;
+    }
+    button.primary{
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:white;
+      padding:12px 16px;
+      border-radius:10px;
+      border:0;
+      font-weight:600;
+      cursor:pointer;
+      box-shadow: 0 8px 20px rgba(11,99,214,0.16);
+    }
+    a.whatsapp{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      padding:10px 12px;
+      border-radius:10px;
+      border:1px solid rgba(34,197,94,0.12);
+      color:var(--success);
+      font-weight:600;
+    }
+
+    /* Right column - info & contact */
+    .right{
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    }
+    .feature{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+    }
+    .feature .badge{
+      width:44px;height:44px;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;display:flex;align-items:center;justify-content:center;font-weight:700;
+    }
+    .feature p{margin:0}
+    .contact{
+      display:flex;
+      gap:8px;
+      align-items:center;
+      justify-content:space-between;
+      margin-top:6px;
+    }
+
+    footer.note{
+      grid-column:1 / -1;
+      margin-top:12px;
+      color:var(--muted);
+      font-size:13px;
+      text-align:center;
+    }
+
+    /* responsive */
+    @media (max-width:880px){
+      .container{grid-template-columns:1fr}
+      body{padding:18px}
+    }
+  </style>
+</head>
+<body>
+  <main class="container" role="main">
+    <header class="site-brand">
+      <div class="logo">CM</div>
+      <div class="brand-text">
+        <h1>~Campéon's Multi-Services CMS</h1>
+        <p>Retraits 1xBet • Souscriptions Internet • Appel & Transfert • Abidance & contact rapide</p>
+      </div>
+    </header>
+
+    <!-- LEFT: Forms with Tabs -->
+    <section class="card left" aria-labelledby="form-title">
+      <h2 id="form-title" style="margin:0 0 6px 0">Faire une demande</h2>
+      <p class="small">Choisis un service ci-dessous, remplis le formulaire et envoie ta demande via WhatsApp.</p>
+
+      <!-- Tab Navigation -->
+      <div class="tabs" role="tablist">
+        <button id="tab-btn-1xbet" class="active" onclick="switchTab('1xbet', this)" role="tab" aria-selected="true" aria-controls="tab-1xbet">1xBet Retrait</button>
+        <button id="tab-btn-internet" onclick="switchTab('internet', this)" role="tab" aria-selected="false" aria-controls="tab-internet">Internet</button>
+        <button id="tab-btn-voice" onclick="switchTab('voice', this)" role="tab" aria-selected="false" aria-controls="tab-voice">Appel & Transfert</button>
+      </div>
+
+      <!-- Tab 1: 1xBet Withdrawal -->
+      <div id="tab-1xbet" class="tab-content active-tab" role="tabpanel" aria-labelledby="tab-btn-1xbet">
+        <form id="withdrawForm" onsubmit="return handleSubmit(event)" aria-describedby="fees-desc">
+          <div class="row">
+            <div style="flex:1 1 220px;">
+              <label for="clientName">Nom complet</label>
+              <input id="clientName" name="clientName" type="text" placeholder="Ex: Kouadio Yao" required />
+            </div>
+            <div style="flex:1 1 160px;">
+              <label for="phone">Téléphone (WhatsApp)</label>
+              <input id="phone" name="phone" type="text" placeholder="Ex: 22507xxxxxxx" required />
+            </div>
+          </div>
+
+          <div class="row">
+            <div style="flex:1 1 200px">
+              <label for="betId">Identifiant 1xBet (ou numéro)</label>
+              <input id="betId" name="betId" type="text" placeholder="Ex: 123456789" required />
+            </div>
+
+            <div style="flex:1 1 160px">
+              <label for="amount">Montant du retrait (XOF)</label>
+              <input id="amount" name="amount" type="number" min="100" step="50" placeholder="Ex: 5000" required />
+            </div>
+          </div>
+
+          <div class="row">
+            <div style="flex:1 1 260px">
+              <label for="recharge">Le client s'est-il rechargé chez Campéon ?</label>
+              <select id="recharge" name="recharge" required>
+                <option value="yes">Oui — j'ai rechargé chez Campéon (5%)</option>
+                <option value="no">Non — rechargé ailleurs (10%)</option>
+              </select>
+            </div>
+
+            <div style="flex:1 1 140px">
+              <label for="note">Note (optionnel)</label>
+              <input id="note" name="note" type="text" placeholder="Message court / info supplémentaire" />
+            </div>
+          </div>
+
+          <div class="summary" aria-live="polite">
+            <div>
+              <div style="font-size:13px;color:var(--muted)">Frais appliqués</div>
+              <div id="feeLabel" style="font-weight:700;font-size:16px">5 %</div>
+            </div>
+            <div style="text-align:right">
+              <div class="small">Commission</div>
+              <div id="feeAmount" style="font-weight:700;font-size:16px">0 XOF</div>
+              <div class="small" style="margin-top:4px">Total à payer</div>
+              <div id="totalAmount" style="font-weight:700;font-size:16px">0 XOF</div>
+            </div>
+          </div>
+
+          <div class="actions" style="margin-top:14px">
+            <button type="submit" class="primary">Envoyer via WhatsApp</button>
+            <a class="whatsapp" id="manualWhatsApp" target="_blank" rel="noopener noreferrer">Contacter (WhatsApp)</a>
+            <a class="wave-btn" id="waveLink" target="_blank" rel="noopener noreferrer">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="transform:translateY(-1px)" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 12C5.5 9 8.5 7 12 7s6.5 2 9 5" stroke="#0B63D6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M3 12c2.5 3 5.5 5 9 5s6.5-2 9-5" stroke="#0B63D6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
+              </svg>
+              Payer via Wave
+            </a>
+          </div>
+
+          <p id="fees-desc" class="small" style="margin-top:8px;color:var(--muted)">
+            Convention : la commission est ajoutée au montant demandé (le client paie la commission).
+          </p>
+        </form>
+      </div>
+
+      <!-- Tab 2: Internet Subscription -->
+      <div id="tab-internet" class="tab-content" role="tabpanel" aria-labelledby="tab-btn-internet">
+        <form id="internetForm" onsubmit="return handleInternetSubmit(event)">
+          <div class="row">
+            <div style="flex:1 1 220px;">
+              <label for="inet-clientName">Nom complet</label>
+              <input id="inet-clientName" name="clientName" type="text" placeholder="Ex: Kouadio Yao" required />
+            </div>
+            <div style="flex:1 1 160px;">
+              <label for="inet-phone">Numéro à recharger</label>
+              <input id="inet-phone" name="phone" type="text" placeholder="Ex: 22507xxxxxxx" required />
+            </div>
+          </div>
+          <div class="row">
+            <div style="flex:1 1 200px">
+              <label for="inet-provider">Opérateur</label>
+              <select id="inet-provider" name="provider" required>
+                <option value="">-- Choisir --</option>
+                <option value="Orange">Orange</option>
+                <option value="MTN">MTN</option>
+                <option value="Moov">Moov</option>
+              </select>
+            </div>
+            <div style="flex:1 1 200px">
+              <label for="inet-offer">Offre souhaitée</label>
+              <select id="inet-offer" name="offer" required>
+                <option value="">-- Choisir --</option>
+                <option value="500 Mo / Jour">500 Mo / Jour</option>
+                <option value="1 Go / Jour">1 Go / Jour</option>
+                <option value="2 Go / Jour">2 Go / Jour</option>
+                <option value="5 Go / Semaine">5 Go / Semaine</option>
+                <option value="10 Go / Semaine">10 Go / Semaine</option>
+                <option value="15 Go / Mois">15 Go / Mois</option>
+                <option value="30 Go / Mois">30 Go / Mois</option>
+                <option value="50 Go / Mois">50 Go / Mois</option>
+                <option value="Autre (préciser en note)">Autre (préciser en note)</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div style="flex:1 1 100%">
+              <label for="inet-note">Note (optionnel)</label>
+              <input id="inet-note" name="note" type="text" placeholder="Précisez si l'offre est 'Autre' ou toute autre information." />
+            </div>
+          </div>
+          <div class="actions" style="margin-top:14px">
+            <button type="submit" class="primary">Commander via WhatsApp</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Tab 3: Voice Credit & Transfer -->
+      <div id="tab-voice" class="tab-content" role="tabpanel" aria-labelledby="tab-btn-voice">
+        <form id="voiceForm" onsubmit="return handleVoiceSubmit(event)">
+          <div class="row">
+            <div style="flex:1 1 220px;">
+              <label for="voice-clientName">Nom complet</label>
+              <input id="voice-clientName" name="clientName" type="text" placeholder="Ex: Kouadio Yao" required />
+            </div>
+            <div style="flex:1 1 160px;">
+              <label for="voice-phone">Votre numéro</label>
+              <input id="voice-phone" name="phone" type="text" placeholder="Ex: 22507xxxxxxx" required />
+            </div>
+          </div>
+          <div class="row">
+            <div style="flex:1 1 200px">
+              <label for="voice-provider">Opérateur</label>
+              <select id="voice-provider" name="provider" required>
+                <option value="">-- Choisir --</option>
+                <option value="Orange">Orange</option>
+                <option value="MTN">MTN</option>
+                <option value="Moov">Moov</option>
+              </select>
+            </div>
+            <div style="flex:1 1 200px">
+              <label for="voice-amount">Montant (XOF)</label>
+              <input id="voice-amount" name="amount" type="number" min="100" step="50" placeholder="Ex: 1000" required />
+            </div>
+          </div>
+          <div class="row">
+            <div style="flex:1 1 100%">
+              <label>Type de service</label>
+              <div style="display:flex; gap:20px; padding-top: 8px;">
+                <label style="font-weight: normal; cursor: pointer;"><input type="radio" name="serviceType" value="credit" checked onchange="toggleRecipientField()"> Crédit d'appel</label>
+                <label style="font-weight: normal; cursor: pointer;"><input type="radio" name="serviceType" value="transfer" onchange="toggleRecipientField()"> Transfert d'unité</label>
+              </div>
+            </div>
+          </div>
+          <div id="recipient-row" class="row" style="display:none;">
+            <div style="flex:1 1 100%">
+              <label for="voice-recipient">Numéro du bénéficiaire</label>
+              <input id="voice-recipient" name="recipient" type="text" placeholder="Numéro qui recevra le transfert" />
+            </div>
+          </div>
+          <div class="actions" style="margin-top:14px">
+            <button type="submit" class="primary">Commander via WhatsApp</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- RIGHT: Info & Contact (unchanged) -->
+    <aside class="card right" aria-labelledby="contact-title">
+      <h3 id="contact-title" style="margin:0 0 6px 0">Contact & services</h3>
+
+      <div class="feature">
+        <div class="badge">5%</div>
+        <div>
+          <p style="margin:0;font-weight:700;">Commission 5%</p>
+          <p class="small">Pour les clients qui se rechargent chez <strong>Campéon</strong>.</p>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="badge">10%</div>
+        <div>
+          <p style="margin:0;font-weight:700;">Commission 10%</p>
+          <p class="small">Pour les clients qui ne se rechargent pas chez <strong>Campéon</strong>.</p>
+        </div>
+      </div>
+
+      <div class="card" style="padding:12px;">
+        <p style="margin:0 0 8px 0;font-weight:700">Paiement Wave</p>
+        <p class="small" style="margin:0 0 10px 0">Fais le paiement directement via Wave :</p>
+        <a id="waveLink2" class="wave-btn" target="_blank" rel="noopener noreferrer">Payer via Wave</a>
+      </div>
+
+      <div class="card" style="padding:12px;">
+        <p style="margin:0 0 8px 0;font-weight:700">WhatsApp</p>
+        <p class="small" style="margin:0 0 10px 0">Contacte l'opérateur directement :</p>
+        <a id="whatsappCall" class="whatsapp" href="#" target="_blank" rel="noopener noreferrer">Ouvrir WhatsApp</a>
+      </div>
+
+      <div style="font-size:13px;color:var(--muted);margin-top:6px;">
+        <strong>Adresse :</strong><br>
+        Abidjan, Côte d'Ivoire (précise l'adresse si tu veux l'afficher ici)
+      </div>
+    </aside>
+
+    <footer class="note">
+      © <span id="year"></span> ~Campéon's Multi-Services CMS — Utilise ce site pour faciliter tes retraits 1xBet, souscriptions et autres services. <br>
+      Conçu pour un usage pratique et déploiement rapide sur Vercel.
+    </footer>
+  </main>
+
+  <script>
+    // === CONFIGURATION (modifier si besoin) ===
+    const WAVE_URL = "https://pay.wave.com/m/M_H0WK7tlfkXZe/c/ci/";
+    const WHATSAPP_NUMBER = "2250142279118";
+    // =========================================
+
+    // --- INIT ---
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('waveLink').href = WAVE_URL;
+    document.getElementById('waveLink2').href = WAVE_URL;
+    document.getElementById('whatsappCall').href = "https://wa.me/" + WHATSAPP_NUMBER;
+
+    // --- TAB SWITCHING ---
+    function switchTab(tabName, buttonElement) {
+      // Hide all tabs
+      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active-tab'));
+      // Deactivate all buttons
+      document.querySelectorAll('.tabs button').forEach(btn => btn.classList.remove('active'));
+      // Show selected tab
+      document.getElementById('tab-' + tabName).classList.add('active-tab');
+      // Activate selected button
+      buttonElement.classList.add('active');
+    }
+
+    // --- 1xBET FORM LOGIC ---
+    const amountInput = document.getElementById('amount');
+    const rechargeSel = document.getElementById('recharge');
+    const feeLabel = document.getElementById('feeLabel');
+    const feeAmount = document.getElementById('feeAmount');
+    const totalAmount = document.getElementById('totalAmount');
+    const manualWhats = document.getElementById('manualWhatsApp');
+
+    function computeAndDisplay(){
+      const amt = parseFloat(amountInput.value) || 0;
+      const isRecharged = rechargeSel.value === 'yes';
+      const rate = isRecharged ? 0.05 : 0.10;
+      const fee = Math.round((amt * rate) * 100) / 100;
+      const total = Math.round((amt + fee) * 100) / 100;
+      feeLabel.textContent = (rate * 100).toFixed(0) + " %";
+      feeAmount.textContent = fee.toLocaleString('fr-FR', {maximumFractionDigits:2, minimumFractionDigits: fee % 1 ? 2 : 0}) + " XOF";
+      totalAmount.textContent = total.toLocaleString('fr-FR', {maximumFractionDigits:2, minimumFractionDigits: total % 1 ? 2 : 0}) + " XOF";
+    }
+    amountInput.addEventListener('input', computeAndDisplay);
+    rechargeSel.addEventListener('change', computeAndDisplay);
+    computeAndDisplay();
+
+    function handleSubmit(e){
+      e.preventDefault();
+      const name = document.getElementById('clientName').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const betId = document.getElementById('betId').value.trim();
+      const amount = parseFloat(amountInput.value) || 0;
+      const recharged = rechargeSel.value === 'yes';
+      const note = document.getElementById('note').value.trim();
+
+      const rate = recharged ? 0.05 : 0.10;
+      const fee = Math.round((amount * rate) * 100) / 100;
+      const total = Math.round((amount + fee) * 100) / 100;
+
+      const message = "Bonjour Campéon,%0AJe souhaite un retrait 1xBet.%0A%0ANom: " + encodeURIComponent(name) + "%0AWhatsApp: " + encodeURIComponent(phone) + "%0AID 1xBet: " + encodeURIComponent(betId) + "%0AMontant demandé: " + amount.toLocaleString('fr-FR') + " XOF%0ACommission (" + (rate*100).toFixed(0) + "%): " + fee.toLocaleString('fr-FR') + " XOF%0ATotal à payer: " + total.toLocaleString('fr-FR') + " XOF%0ANote: " + encodeURIComponent(note || "-") + "%0A%0AMerci.";
+      const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + message;
+      window.open(url, '_blank');
+      return false;
+    }
+
+    // --- INTERNET FORM LOGIC ---
+    function handleInternetSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('inet-clientName').value.trim();
+      const phone = document.getElementById('inet-phone').value.trim();
+      const provider = document.getElementById('inet-provider').value;
+      const offer = document.getElementById('inet-offer').value;
+      const note = document.getElementById('inet-note').value.trim();
+
+      const message = "Bonjour Campéon,%0AJe souhaite une souscription Internet.%0A%0ANom: " + encodeURIComponent(name) + "%0ANuméro: " + encodeURIComponent(phone) + "%0AOpérateur: " + encodeURIComponent(provider) + "%0AOffre: " + encodeURIComponent(offer) + "%0ANote: " + encodeURIComponent(note || "-") + "%0A%0AMerci.";
+      const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + message;
+      window.open(url, '_blank');
+      return false;
+    }
+
+    // --- VOICE FORM LOGIC ---
+    function toggleRecipientField() {
+      const serviceType = document.querySelector('input[name="serviceType"]:checked').value;
+      const recipientRow = document.getElementById('recipient-row');
+      const recipientInput = document.getElementById('voice-recipient');
+      if (serviceType === 'transfer') {
+        recipientRow.style.display = 'flex';
+        recipientInput.required = true;
+      } else {
+        recipientRow.style.display = 'none';
+        recipientInput.required = false;
+      }
+    }
+
+    function handleVoiceSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('voice-clientName').value.trim();
+      const phone = document.getElementById('voice-phone').value.trim();
+      const provider = document.getElementById('voice-provider').value;
+      const amount = parseFloat(document.getElementById('voice-amount').value) || 0;
+      const serviceType = document.querySelector('input[name="serviceType"]:checked').value;
+      const recipient = document.getElementById('voice-recipient').value.trim();
+
+      let message = "Bonjour Campéon,%0AJe souhaite " + (serviceType === 'credit' ? "un crédit d'appel" : "un transfert d'unité") + ".%0A%0ANom: " + encodeURIComponent(name) + "%0ANuméro: " + encodeURIComponent(phone) + "%0AOpérateur: " + encodeURIComponent(provider) + "%0AMontant: " + amount.toLocaleString('fr-FR') + " XOF";
+      if (serviceType === 'transfer') {
+        message += "%0ANuméro bénéficiaire: " + encodeURIComponent(recipient);
+      }
+      message += "%0A%0AMerci.";
+
+      const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + message;
+      window.open(url, '_blank');
+      return false;
+    }
+
+  </script>
+</body>
+</html>
