@@ -87,6 +87,7 @@
       gap: 8px;
       border-bottom: 1px solid #e6eefc;
       margin-bottom: 20px;
+      flex-wrap: wrap; /* Allow tabs to wrap on small screens */
     }
     .tabs button {
       background: none;
@@ -232,7 +233,7 @@
       <div class="logo">CM</div>
       <div class="brand-text">
         <h1>~Campéon's Multi-Services CMS</h1>
-        <p>Retraits 1xBet • Souscriptions Internet • Appel & Transfert • Abidance & contact rapide</p>
+        <p>Retraits & Dépôts 1xBet • Internet • Appel & Transfert • Abidance & contact rapide</p>
       </div>
     </header>
 
@@ -244,6 +245,7 @@
       <!-- Tab Navigation -->
       <div class="tabs" role="tablist">
         <button id="tab-btn-1xbet" class="active" onclick="switchTab('1xbet', this)" role="tab" aria-selected="true" aria-controls="tab-1xbet">1xBet Retrait</button>
+        <button id="tab-btn-depot" onclick="switchTab('depot', this)" role="tab" aria-selected="false" aria-controls="tab-depot">Dépôt 1xBet</button>
         <button id="tab-btn-internet" onclick="switchTab('internet', this)" role="tab" aria-selected="false" aria-controls="tab-internet">Internet</button>
         <button id="tab-btn-voice" onclick="switchTab('voice', this)" role="tab" aria-selected="false" aria-controls="tab-voice">Appel & Transfert</button>
       </div>
@@ -261,19 +263,16 @@
               <input id="phone" name="phone" type="text" placeholder="Ex: 22507xxxxxxx" required />
             </div>
           </div>
-
           <div class="row">
             <div style="flex:1 1 200px">
               <label for="betId">Identifiant 1xBet (ou numéro)</label>
               <input id="betId" name="betId" type="text" placeholder="Ex: 123456789" required />
             </div>
-
             <div style="flex:1 1 160px">
               <label for="amount">Montant du retrait (XOF)</label>
               <input id="amount" name="amount" type="number" min="100" step="50" placeholder="Ex: 5000" required />
             </div>
           </div>
-
           <div class="row">
             <div style="flex:1 1 260px">
               <label for="recharge">Le client s'est-il rechargé chez Campéon ?</label>
@@ -282,13 +281,11 @@
                 <option value="no">Non — rechargé ailleurs (10%)</option>
               </select>
             </div>
-
             <div style="flex:1 1 140px">
               <label for="note">Note (optionnel)</label>
               <input id="note" name="note" type="text" placeholder="Message court / info supplémentaire" />
             </div>
           </div>
-
           <div class="summary" aria-live="polite">
             <div>
               <div style="font-size:13px;color:var(--muted)">Frais appliqués</div>
@@ -301,7 +298,6 @@
               <div id="totalAmount" style="font-weight:700;font-size:16px">0 XOF</div>
             </div>
           </div>
-
           <div class="actions" style="margin-top:14px">
             <button type="submit" class="primary">Envoyer via WhatsApp</button>
             <a class="whatsapp" id="manualWhatsApp" target="_blank" rel="noopener noreferrer">Contacter (WhatsApp)</a>
@@ -313,14 +309,66 @@
               Payer via Wave
             </a>
           </div>
-
           <p id="fees-desc" class="small" style="margin-top:8px;color:var(--muted)">
             Convention : la commission est ajoutée au montant demandé (le client paie la commission).
           </p>
         </form>
       </div>
 
-      <!-- Tab 2: Internet Subscription -->
+      <!-- Tab 2: 1xBet Deposit -->
+      <div id="tab-depot" class="tab-content" role="tabpanel" aria-labelledby="tab-btn-depot">
+        <div class="card" style="padding:16px; margin-bottom:20px; background-color: #f8fbff;">
+          <p style="margin:0 0 8px 0;font-weight:700">Adresses de dépôt pour les recharges 1xBet</p>
+          <p class="small" style="margin:0 0 10px 0">Effectue tes recharges facilement :</p>
+          <p style="margin:0 0 4px 0;font-weight:600;">Paiement Wave</p>
+          <a href="https://pay.wave.com/m/M_H0WK7tlfkXZe/c/ci/" class="wave-btn" target="_blank" rel="noopener noreferrer">Payer via Wave</a>
+          <p class="small" style="margin-top:6px; margin-bottom: 12px;">💡 Astuce : Ajoute cet expéditeur à tes contacts pour que le lien soit cliquable directement.</p>
+          <p style="margin:0 0 4px 0;font-weight:600;">Dépôt direct</p>
+          <p class="small" style="margin:0 0 8px 0;">
+            <strong>MTN:</strong> <a href="tel:+2250564211662">0564211662</a><br>
+            <strong>Orange:</strong> <a href="tel:+2250719646067">0719646067</a><br>
+            <strong>Moov:</strong> <a href="tel:+2250142279118">0142279118</a>
+          </p>
+          <div style="background:#f0fdf4; border:1px solid #bbf7d0; padding:10px; border-radius:8px; text-align:center; margin-top:10px;">
+            <span style="font-size:18px; margin-right:6px;">✅</span>
+            <span style="font-weight:700; color:var(--success);">Pas de frais sur les recharges !</span>
+          </div>
+        </div>
+
+        <form id="depotForm" onsubmit="return handleDepotSubmit(event)">
+          <div class="row">
+            <div style="flex:1 1 220px;">
+              <label for="depot-clientName">Nom complet</label>
+              <input id="depot-clientName" name="clientName" type="text" placeholder="Ex: Kouadio Yao" required />
+            </div>
+            <div style="flex:1 1 160px;">
+              <label for="depot-phone">Téléphone (WhatsApp)</label>
+              <input id="depot-phone" name="phone" type="text" placeholder="Ex: 22507xxxxxxx" required />
+            </div>
+          </div>
+          <div class="row">
+            <div style="flex:1 1 200px">
+              <label for="depot-betId">Identifiant 1xBet (ou numéro)</label>
+              <input id="depot-betId" name="betId" type="text" placeholder="Ex: 123456789" required />
+            </div>
+            <div style="flex:1 1 160px">
+              <label for="depot-amount">Montant du dépôt (XOF)</label>
+              <input id="depot-amount" name="amount" type="number" min="500" step="100" placeholder="Ex: 5000" required />
+            </div>
+          </div>
+          <div class="row">
+            <div style="flex:1 1 100%">
+              <label for="depot-note">Note (optionnel)</label>
+              <input id="depot-note" name="note" type="text" placeholder="Précisez ici si vous avez payé via Wave ou Orange Money, etc." />
+            </div>
+          </div>
+          <div class="actions" style="margin-top:14px">
+            <button type="submit" class="primary">Demander un dépôt via WhatsApp</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Tab 3: Internet Subscription -->
       <div id="tab-internet" class="tab-content" role="tabpanel" aria-labelledby="tab-btn-internet">
         <form id="internetForm" onsubmit="return handleInternetSubmit(event)">
           <div class="row">
@@ -371,7 +419,7 @@
         </form>
       </div>
 
-      <!-- Tab 3: Voice Credit & Transfer -->
+      <!-- Tab 4: Voice Credit & Transfer -->
       <div id="tab-voice" class="tab-content" role="tabpanel" aria-labelledby="tab-btn-voice">
         <form id="voiceForm" onsubmit="return handleVoiceSubmit(event)">
           <div class="row">
@@ -421,7 +469,7 @@
       </div>
     </section>
 
-    <!-- RIGHT: Info & Contact (unchanged) -->
+    <!-- RIGHT: Info & Contact -->
     <aside class="card right" aria-labelledby="contact-title">
       <h3 id="contact-title" style="margin:0 0 6px 0">Contact & services</h3>
 
@@ -489,7 +537,7 @@
       buttonElement.classList.add('active');
     }
 
-    // --- 1xBET FORM LOGIC ---
+    // --- 1xBET WITHDRAWAL FORM LOGIC ---
     const amountInput = document.getElementById('amount');
     const rechargeSel = document.getElementById('recharge');
     const feeLabel = document.getElementById('feeLabel');
@@ -525,6 +573,21 @@
       const total = Math.round((amount + fee) * 100) / 100;
 
       const message = "Bonjour Campéon,%0AJe souhaite un retrait 1xBet.%0A%0ANom: " + encodeURIComponent(name) + "%0AWhatsApp: " + encodeURIComponent(phone) + "%0AID 1xBet: " + encodeURIComponent(betId) + "%0AMontant demandé: " + amount.toLocaleString('fr-FR') + " XOF%0ACommission (" + (rate*100).toFixed(0) + "%): " + fee.toLocaleString('fr-FR') + " XOF%0ATotal à payer: " + total.toLocaleString('fr-FR') + " XOF%0ANote: " + encodeURIComponent(note || "-") + "%0A%0AMerci.";
+      const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + message;
+      window.open(url, '_blank');
+      return false;
+    }
+
+    // --- 1xBET DEPOSIT FORM LOGIC ---
+    function handleDepotSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('depot-clientName').value.trim();
+      const phone = document.getElementById('depot-phone').value.trim();
+      const betId = document.getElementById('depot-betId').value.trim();
+      const amount = parseFloat(document.getElementById('depot-amount').value) || 0;
+      const note = document.getElementById('depot-note').value.trim();
+
+      const message = "Bonjour Campéon,%0AJe souhaite effectuer un dépôt 1xBet.%0A%0ANom: " + encodeURIComponent(name) + "%0AWhatsApp: " + encodeURIComponent(phone) + "%0AID 1xBet: " + encodeURIComponent(betId) + "%0AMontant du dépôt: " + amount.toLocaleString('fr-FR') + " XOF%0ANote: " + encodeURIComponent(note || "-") + "%0A%0AMerci.";
       const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + message;
       window.open(url, '_blank');
       return false;
